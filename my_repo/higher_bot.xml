@@ -1,0 +1,121 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="QI3?PHV.9[vg%?3o`^d3">start_time</variable>
+  </variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">1HZ10V</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">higherlower</field>
+    <field name="TYPE_LIST">CALL</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="zBjpPNjJ0n~buSGU{6EM">
+        <field name="VAR" id="QI3?PHV.9[vg%?3o`^d3" variabletype="">start_time</field>
+        <value name="VALUE">
+          <block type="totimestamp" id="v!,Dr4Z@Ox7AqRjVvCW_">
+            <value name="DATETIME">
+              <shadow type="text" id="H-=0ABIxj:vOV@iYI4Zs">
+                <field name="TEXT">2024-02-09 07:25:00</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="notify" id="G|$q!?UoyCT7[!|UFC`_">
+        <field name="NOTIFICATION_TYPE">success</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="dcPI|z~+ul}%Foox~Q)[">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="check_direction" id="{=|{Z}z4,gVU50[4%|?`">
+            <field name="CHECK_DIRECTION">rise</field>
+          </block>
+        </value>
+        <next>
+          <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+            <field name="DURATIONTYPE_LIST">m</field>
+            <field name="BARRIEROFFSETTYPE_LIST">+</field>
+            <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+            <value name="DURATION">
+              <shadow type="math_number" id="s$hEEf]IYBM|--b#9,[d">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="AMOUNT">
+              <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="BARRIEROFFSET">
+              <shadow type="math_number" id="eFQiQ?;:`;Z=T^?BGAU/">
+                <field name="NUM">0.54</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="check_direction" id="F6S;xmaTAT(vwZ?+OKok" disabled="true" x="-651" y="316">
+    <field name="CHECK_DIRECTION">rise</field>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="-8" y="467">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="R=a;pG=v7[8@NO$#ln7?">
+        <value name="IF0">
+          <block type="logic_compare" id="}Sw|gQqoF=vnK}R[pVbJ">
+            <field name="OP">GTE</field>
+            <value name="A">
+              <block type="epoch" id="~n7=lvUh+a$thx@;L9L9"></block>
+            </value>
+            <value name="B">
+              <block type="variables_get" id="`VK3xzi*PlPBHOTD?*wj">
+                <field name="VAR" id="QI3?PHV.9[vg%?3o`^d3" variabletype="">start_time</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+            <field name="PURCHASE_LIST">CALL</field>
+          </block>
+        </statement>
+        <next>
+          <block type="variables_set" id="|W%z_6w(1U-qV@Xmxupe">
+            <field name="VAR" id="QI3?PHV.9[vg%?3o`^d3" variabletype="">start_time</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="5(Gh|=7f=R2.]}?j1mj]">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <shadow type="math_number" id="$;8wZKVx!ERu_Y(dvQ5p">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id=".0r%Dk2-t2,ITH78%G]p">
+                    <field name="VAR" id="QI3?PHV.9[vg%?3o`^d3" variabletype="">start_time</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="Dd.D;2vNry4/(!I#2bh_">
+                    <field name="NUM">60</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="-10" y="667">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+    </statement>
+  </block>
+</xml>
