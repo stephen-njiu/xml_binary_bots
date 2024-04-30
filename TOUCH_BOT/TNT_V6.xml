@@ -1,0 +1,1435 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="lzQ#K[.?IsLu~%Uri*.0">sma_100</variable>
+    <variable type="" id="VQ}f.zeW0uFg5rNZ$qo$">sma_50</variable>
+    <variable type="" id="5ilsSIWAcmVAO/r?8%/T">ema_30</variable>
+    <variable type="" id="qHHND%0fk6NBpyC,E$GS">ema_6</variable>
+    <variable type="" id="5447oUVI7GzjxCjv~MXF">bb_top</variable>
+    <variable type="" id="(![yo3:o_)z{6Oqtr,hV">bb_middle</variable>
+    <variable type="" id="Xt1Q`;k4`6.*sB`EO?S{">bb_lower</variable>
+    <variable type="" id="W6x#](}sdX*#w({83ZVZ">rsi</variable>
+    <variable type="" id="c`Dq#TQ-G:gmk*w[Rj8j">volatility</variable>
+    <variable type="" id="CA}19Sk_:,f*nd9[iT-V">sma_below_low</variable>
+    <variable type="" id="U+QL7`L)/`43H4Vr:JY+">diff_1</variable>
+    <variable type="" id=":)d;19`*`Tj$]XoXVae|">diff_2</variable>
+    <variable type="" id="cK+O0Xad+fwIAemzzaK}">diff_crossover</variable>
+    <variable type="" id="U6?Ep5$7PFxw?GZGEt;O">ema_30_crossover</variable>
+    <variable type="" id="dU4GMElE/PKC4Wu-_}VO">bb_middle_crossover</variable>
+    <variable type="" id="}8[PT#DFn;w4OuYo/cVr">ema_30_comp</variable>
+    <variable type="" id="I4p_xJrnHJwr@c[dY_f*">touch_upper_1</variable>
+    <variable type="" id="rb%?f}5_aW*EpqlfHMV;">sma_100_cup_position</variable>
+    <variable type="" id="`XIwQ*x4##K[XMYb8a)+">sma_50_cup_position</variable>
+    <variable type="" id="7OB1X6NArJZ:1?vO/Bl$">cup_position</variable>
+    <variable type="" id="bx??y*)o7svcj+|`7$9)">touch_upper_comp</variable>
+  </variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" collapsed="true" x="0" y="0">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">1HZ10V</field>
+    <field name="TRADETYPECAT_LIST">touchnotouch</field>
+    <field name="TRADETYPE_LIST">touchnotouch</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="BARRIEROFFSETTYPE_LIST">+</field>
+        <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="1oxo2U^Iyt5.zb3:^Ks8">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="BARRIEROFFSET">
+          <shadow type="math_number" id="P,kceDCO}M7Y+60iB=Vh">
+            <field name="NUM">0.33</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" collapsed="true" x="0" y="53">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="variables_set" id="p{?$oj8$T*Wh4)U8qSh_">
+        <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+        <value name="VALUE">
+          <block type="smaa" id="aJuw#FZSgAca``0zNv[w">
+            <value name="INPUT">
+              <block type="ticks" id="B/|Hkw9)`Z|1%tI1t]M,"></block>
+            </value>
+            <value name="PERIOD">
+              <shadow type="math_number" id="%o]c`2{iAiz%;y;Bp~4%">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="M?g$G^SUN,pL!QQQAr{q">
+            <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+            <value name="VALUE">
+              <block type="smaa" id="lT=.!yhoiw8pN]iS5Hkb">
+                <value name="INPUT">
+                  <block type="ticks" id="(oX?.]xgbZ?[Vd*`/fkW"></block>
+                </value>
+                <value name="PERIOD">
+                  <shadow type="math_number" id="/_%hX^EblPX0suf_NEXf">
+                    <field name="NUM">50</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="^{1P9|mvCXm6F_W5@+:,">
+                <field name="VAR" id="5ilsSIWAcmVAO/r?8%/T" variabletype="">ema_30</field>
+                <value name="VALUE">
+                  <block type="emaa" id="M*WLV3y!cC13G{u$!Nry">
+                    <value name="INPUT">
+                      <block type="ticks" id="Y%{A.}dJCLvyc@Um}sj,"></block>
+                    </value>
+                    <value name="PERIOD">
+                      <shadow type="math_number" id="WV80e^=I/AraMJ;2H%[d">
+                        <field name="NUM">30</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="l`JI8byeqiMME[x$/ww]">
+                    <field name="VAR" id="qHHND%0fk6NBpyC,E$GS" variabletype="">ema_6</field>
+                    <value name="VALUE">
+                      <block type="emaa" id="x35(9-ZMYmR@nj^Uo~-)">
+                        <value name="INPUT">
+                          <block type="ticks" id="Axt_T0YPWtv.9Kgq3rjT"></block>
+                        </value>
+                        <value name="PERIOD">
+                          <shadow type="math_number" id="jq@i|*U8(x10MN3c]D)s">
+                            <field name="NUM">6</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="qN$OQ%x*Y$R2-%q1^%`%">
+                        <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                        <value name="VALUE">
+                          <block type="bba" id="(S5k?DlNt5;n@x{j2eV^">
+                            <field name="BBRESULT_LIST">1</field>
+                            <value name="INPUT">
+                              <block type="ticks" id="V:xw$,._!K;eb;oAP[C]"></block>
+                            </value>
+                            <value name="PERIOD">
+                              <shadow type="math_number" id="wJ]eQ:|n8;{(tB(,Gt;i">
+                                <field name="NUM">20</field>
+                              </shadow>
+                            </value>
+                            <value name="UPMULTIPLIER">
+                              <shadow type="math_number" id="qPSM`z{xqRfW:83GhSHk">
+                                <field name="NUM">2</field>
+                              </shadow>
+                            </value>
+                            <value name="DOWNMULTIPLIER">
+                              <shadow type="math_number" id="Dn^{z;IT$!^vmKej:{hP">
+                                <field name="NUM">2</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="JS-,(8+@BFvEq1lx7/8Z">
+                            <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                            <value name="VALUE">
+                              <block type="bba" id="TVz{9oDR/p#%[xmw(p:1">
+                                <field name="BBRESULT_LIST">0</field>
+                                <value name="INPUT">
+                                  <block type="ticks" id="=PQ8Ymfac.B_XNTpN=0N"></block>
+                                </value>
+                                <value name="PERIOD">
+                                  <shadow type="math_number" id="#NAi(Yg^O!WA5WK]X=8$">
+                                    <field name="NUM">20</field>
+                                  </shadow>
+                                </value>
+                                <value name="UPMULTIPLIER">
+                                  <shadow type="math_number" id="w?Qp0mwF(G7.u0Lb1Ngc">
+                                    <field name="NUM">2</field>
+                                  </shadow>
+                                </value>
+                                <value name="DOWNMULTIPLIER">
+                                  <shadow type="math_number" id="NptNbXWe?+I/5L}GG8WJ">
+                                    <field name="NUM">2</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="1vRt_~`e!z(gJ6{t5ru#">
+                                <field name="VAR" id="Xt1Q`;k4`6.*sB`EO?S{" variabletype="">bb_lower</field>
+                                <value name="VALUE">
+                                  <block type="bba" id="D5$mfpU%:=p}A0w7VbAo">
+                                    <field name="BBRESULT_LIST">2</field>
+                                    <value name="INPUT">
+                                      <block type="ticks" id="Fx(v3n5BGhU^G2}KsnB["></block>
+                                    </value>
+                                    <value name="PERIOD">
+                                      <shadow type="math_number" id="/TK)9|@Pl4|Ls~Vr}Qx/">
+                                        <field name="NUM">20</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="UPMULTIPLIER">
+                                      <shadow type="math_number" id="SuZVw`EY7pAHA?uVn5.;">
+                                        <field name="NUM">2</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="DOWNMULTIPLIER">
+                                      <shadow type="math_number" id="73Dx=,~l~Zr2rVC/[srb">
+                                        <field name="NUM">2</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="vJ293~!;cisETs)t[fl:">
+                                    <field name="VAR" id="W6x#](}sdX*#w({83ZVZ" variabletype="">rsi</field>
+                                    <value name="VALUE">
+                                      <block type="rsia" id=".|L#YJb{iH[me.1(|=vW">
+                                        <value name="INPUT">
+                                          <block type="ticks" id="0w@TfDfr.d5uAgiS|Wf%"></block>
+                                        </value>
+                                        <value name="PERIOD">
+                                          <shadow type="math_number" id="?I+4j0W:T2Su|-q$._K$">
+                                            <field name="NUM">14</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="*[d;o$@0Qu3_Y4seUSv)">
+                                        <field name="VAR" id="c`Dq#TQ-G:gmk*w[Rj8j" variabletype="">volatility</field>
+                                        <value name="VALUE">
+                                          <block type="logic_compare" id=")kwzf:nMvt7POH`j`,*X">
+                                            <field name="OP">GTE</field>
+                                            <value name="A">
+                                              <block type="math_arithmetic" id="AF#$B-mmv13}f-v)xw!F">
+                                                <field name="OP">MINUS</field>
+                                                <value name="A">
+                                                  <shadow type="math_number" id="(RgezK0:MW+*i62-Q%uc">
+                                                    <field name="NUM">1</field>
+                                                  </shadow>
+                                                  <block type="lists_getIndex" id="R_2_.@Uddv_52V{l9pv9">
+                                                    <mutation statement="false" at="false"></mutation>
+                                                    <field name="MODE">GET</field>
+                                                    <field name="WHERE">LAST</field>
+                                                    <value name="VALUE">
+                                                      <block type="variables_get" id="wK/b*Pds}IMIq1A,EQ_2">
+                                                        <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <shadow type="math_number" id="z!fVM*@qbxToX/!ZX:#B">
+                                                    <field name="NUM">1</field>
+                                                  </shadow>
+                                                  <block type="lists_getIndex" id="kl7K*$|*-PpZPp0EunR/">
+                                                    <mutation statement="false" at="false"></mutation>
+                                                    <field name="MODE">GET</field>
+                                                    <field name="WHERE">LAST</field>
+                                                    <value name="VALUE">
+                                                      <block type="variables_get" id="dWlxl+-jLUeh0L5^[n!G">
+                                                        <field name="VAR" id="Xt1Q`;k4`6.*sB`EO?S{" variabletype="">bb_lower</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="6X*(z0_6xHD2(Rki|/`C">
+                                                <field name="NUM">0.8</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id=".z!lbGr)XPq!SQYEI1iT">
+                                            <field name="VAR" id="CA}19Sk_:,f*nd9[iT-V" variabletype="">sma_below_low</field>
+                                            <value name="VALUE">
+                                              <block type="logic_compare" id="6R4qQ0IB853~D2EDekYC">
+                                                <field name="OP">LT</field>
+                                                <value name="A">
+                                                  <block type="lists_getIndex" id="`1V,DgJfjtxu;1(w?7K.">
+                                                    <mutation statement="false" at="false"></mutation>
+                                                    <field name="MODE">GET</field>
+                                                    <field name="WHERE">LAST</field>
+                                                    <value name="VALUE">
+                                                      <block type="variables_get" id="p%fd%w3(}t0|3J`@:,#W">
+                                                        <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="lists_getIndex" id="AB/oRH(fp)1SV(0En23}">
+                                                    <mutation statement="false" at="false"></mutation>
+                                                    <field name="MODE">GET</field>
+                                                    <field name="WHERE">LAST</field>
+                                                    <value name="VALUE">
+                                                      <block type="variables_get" id="BMkYfG$hl[vg_k9+,RtP">
+                                                        <field name="VAR" id="Xt1Q`;k4`6.*sB`EO?S{" variabletype="">bb_lower</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="`2##T|yJQ2L3k4C6;wY]">
+                                                <field name="VAR" id="U+QL7`L)/`43H4Vr:JY+" variabletype="">diff_1</field>
+                                                <value name="VALUE">
+                                                  <block type="logic_compare" id="Et1SpmF%zp*P?RD_8GPO">
+                                                    <field name="OP">LTE</field>
+                                                    <value name="A">
+                                                      <block type="math_single" id="m5q=;B2O%@AYuc,eb)U#">
+                                                        <field name="OP">ABS</field>
+                                                        <value name="NUM">
+                                                          <shadow type="math_number" id="4HT-#ViW.=nhj]p_by(r">
+                                                            <field name="NUM">9</field>
+                                                          </shadow>
+                                                          <block type="math_arithmetic" id="]R*X0KBK}BIn$v@292QI">
+                                                            <field name="OP">MINUS</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number" id="(RgezK0:MW+*i62-Q%uc">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="lists_getIndex" id="g7M|ePqN)LU5tbxXq:se">
+                                                                <mutation statement="false" at="false"></mutation>
+                                                                <field name="MODE">GET</field>
+                                                                <field name="WHERE">LAST</field>
+                                                                <value name="VALUE">
+                                                                  <block type="variables_get" id="ntRVlS[8GI^DDl+bi-M3">
+                                                                    <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="z!fVM*@qbxToX/!ZX:#B">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="lists_getIndex" id="N1#l?EC/~iOAL4{?ON2!">
+                                                                <mutation statement="false" at="false"></mutation>
+                                                                <field name="MODE">GET</field>
+                                                                <field name="WHERE">LAST</field>
+                                                                <value name="VALUE">
+                                                                  <block type="variables_get" id="v{7_m_AD4Y^1Nk{B`iCc">
+                                                                    <field name="VAR" id="Xt1Q`;k4`6.*sB`EO?S{" variabletype="">bb_lower</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="`^pu0lc8C`S[E?KJnba?">
+                                                        <field name="NUM">0.1</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="[J$Gy-W)~^L8D#,e#cyV">
+                                                    <field name="VAR" id=":)d;19`*`Tj$]XoXVae|" variabletype="">diff_2</field>
+                                                    <value name="VALUE">
+                                                      <block type="logic_compare" id=",~v8lc@cvSm:QtG!%[,j">
+                                                        <field name="OP">LTE</field>
+                                                        <value name="A">
+                                                          <block type="math_single" id="*xM-)6$_XNtkr%%K!|1[">
+                                                            <field name="OP">ABS</field>
+                                                            <value name="NUM">
+                                                              <shadow type="math_number" id="4HT-#ViW.=nhj]p_by(r">
+                                                                <field name="NUM">9</field>
+                                                              </shadow>
+                                                              <block type="math_arithmetic" id="%KL5Mgq|z-lBmr]C)eFi">
+                                                                <field name="OP">MINUS</field>
+                                                                <value name="A">
+                                                                  <shadow type="math_number" id="(RgezK0:MW+*i62-Q%uc">
+                                                                    <field name="NUM">1</field>
+                                                                  </shadow>
+                                                                  <block type="lists_getIndex" id="sw5~?{ze.XMk7[E.iIm9">
+                                                                    <mutation statement="false" at="false"></mutation>
+                                                                    <field name="MODE">GET</field>
+                                                                    <field name="WHERE">LAST</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="variables_get" id="g8L)tD1Oqh_v%/KeIGHw">
+                                                                        <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <shadow type="math_number" id="z!fVM*@qbxToX/!ZX:#B">
+                                                                    <field name="NUM">1</field>
+                                                                  </shadow>
+                                                                  <block type="lists_getIndex" id="$:@}`,?=78whE(sn^EeC">
+                                                                    <mutation statement="false" at="false"></mutation>
+                                                                    <field name="MODE">GET</field>
+                                                                    <field name="WHERE">LAST</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="variables_get" id="jErvON!!U6[C9ES*fPF#">
+                                                                        <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="math_number" id="d4}wv!tE((G3@M3L~*q3">
+                                                            <field name="NUM">0.3</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="~?2z5Hth5~hYARtGJegm">
+                                                        <field name="VAR" id="cK+O0Xad+fwIAemzzaK}" variabletype="">diff_crossover</field>
+                                                        <value name="VALUE">
+                                                          <block type="logic_compare" id="qDfl/Rz$W-0l=ylGw[?9">
+                                                            <field name="OP">LTE</field>
+                                                            <value name="A">
+                                                              <block type="math_single" id="W$0CtVJN5G1g2v*,`Obc">
+                                                                <field name="OP">ABS</field>
+                                                                <value name="NUM">
+                                                                  <shadow type="math_number" id="4HT-#ViW.=nhj]p_by(r">
+                                                                    <field name="NUM">9</field>
+                                                                  </shadow>
+                                                                  <block type="math_arithmetic" id="W%=z@1v~CCDNFCEbqjr0">
+                                                                    <field name="OP">MINUS</field>
+                                                                    <value name="A">
+                                                                      <shadow type="math_number" id="(RgezK0:MW+*i62-Q%uc">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="lists_getIndex" id="x#i0BU|*%Iz7!e3kVs3H">
+                                                                        <mutation statement="false" at="false"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">LAST</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="O;ycTdo`-er#kJMKc*G4">
+                                                                            <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <shadow type="math_number" id="z!fVM*@qbxToX/!ZX:#B">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="lists_getIndex" id=",]4tyMNU-Suxw3=t,~bS">
+                                                                        <mutation statement="false" at="false"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">LAST</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="u,FrFp/?B9K^dG#DDL~V">
+                                                                            <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="math_number" id=":KI-1SOpuZ*mN_IW^7~0">
+                                                                <field name="NUM">0.1</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id="::jfN[}$DzqiZB(_dL]u">
+                                                            <field name="VAR" id="U6?Ep5$7PFxw?GZGEt;O" variabletype="">ema_30_crossover</field>
+                                                            <value name="VALUE">
+                                                              <block type="logic_operation" id="U+!a|Hv=qwE*Y1:TE)#M">
+                                                                <field name="OP">AND</field>
+                                                                <value name="A">
+                                                                  <block type="logic_compare" id="[i;w2HN|Y?d{zNW#y/vW">
+                                                                    <field name="OP">GT</field>
+                                                                    <value name="A">
+                                                                      <block type="tick" id="g~`JAZ9`+j1rdCFRPgSg"></block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="lists_getIndex" id="|VaD_fa-+dc]J|ix7rh,">
+                                                                        <mutation statement="false" at="false"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">LAST</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="eLCvGzlA.1hCH88w5A|y">
+                                                                            <field name="VAR" id="5ilsSIWAcmVAO/r?8%/T" variabletype="">ema_30</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="logic_compare" id="rO~4$Z3G,T`KYEi^vMnf">
+                                                                    <field name="OP">LT</field>
+                                                                    <value name="A">
+                                                                      <block type="lists_getIndex" id="k|u~Rggk?D=;/;(ZDD;D">
+                                                                        <mutation statement="false" at="true"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">FROM_END</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="ticks" id="28dI?Yr/kJ9m1S4?9~ig"></block>
+                                                                        </value>
+                                                                        <value name="AT">
+                                                                          <block type="math_number" id="eW+y$59sBg?5h5}QvPZ1">
+                                                                            <field name="NUM">2</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="lists_getIndex" id="Fb7q3Qiem_)^P=}VzUos">
+                                                                        <mutation statement="false" at="true"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">FROM_END</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="F{CB^oWa.a;?Eqs}HxL+">
+                                                                            <field name="VAR" id="5ilsSIWAcmVAO/r?8%/T" variabletype="">ema_30</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="AT">
+                                                                          <block type="math_number" id="5[#dpbD(Fz]x|WRFK?IF">
+                                                                            <field name="NUM">2</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="variables_set" id="BRkN5%f-63YcN/iFl2W~">
+                                                                <field name="VAR" id="dU4GMElE/PKC4Wu-_}VO" variabletype="">bb_middle_crossover</field>
+                                                                <value name="VALUE">
+                                                                  <block type="logic_operation" id="La$ryUA7vI(k.h4k5864">
+                                                                    <field name="OP">AND</field>
+                                                                    <value name="A">
+                                                                      <block type="logic_compare" id="X,let}n[bUn]oC,s}w-#">
+                                                                        <field name="OP">GT</field>
+                                                                        <value name="A">
+                                                                          <block type="tick" id="87v(aEm05=1Ehybhu,eA"></block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="lists_getIndex" id="Jz(LNW0jVzDhGSoG=FEq">
+                                                                            <mutation statement="false" at="false"></mutation>
+                                                                            <field name="MODE">GET</field>
+                                                                            <field name="WHERE">LAST</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="variables_get" id="_ZCiCUNi+,h-CcUt_#gH">
+                                                                                <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="logic_compare" id="Fw({S2ScGkS9w3pMusf-">
+                                                                        <field name="OP">LT</field>
+                                                                        <value name="A">
+                                                                          <block type="lists_getIndex" id="PNU-{l/e,oJix,/as=)m">
+                                                                            <mutation statement="false" at="true"></mutation>
+                                                                            <field name="MODE">GET</field>
+                                                                            <field name="WHERE">FROM_END</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="ticks" id="RXlfwPr/zXC}%mmy01CM"></block>
+                                                                            </value>
+                                                                            <value name="AT">
+                                                                              <block type="math_number" id="bTsS}BG!.!dIw6?S;yqd">
+                                                                                <field name="NUM">2</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="lists_getIndex" id="Y-kw`K!E79Tbj+%YIZaE">
+                                                                            <mutation statement="false" at="true"></mutation>
+                                                                            <field name="MODE">GET</field>
+                                                                            <field name="WHERE">FROM_END</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="variables_get" id="WUN1Tf+BAnhyJ)GZGmeg">
+                                                                                <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="AT">
+                                                                              <block type="math_number" id=")tCVgz7HeWyDgV!1SOZ0">
+                                                                                <field name="NUM">2</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="variables_set" id=")xn|J0f}RvSu)q0PsP?f">
+                                                                    <field name="VAR" id="}8[PT#DFn;w4OuYo/cVr" variabletype="">ema_30_comp</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="logic_operation" id="2N^L4mpSws6:q$B8fC|w">
+                                                                        <field name="OP">AND</field>
+                                                                        <value name="A">
+                                                                          <block type="logic_compare" id="!zazI.lzXXvR8J5w2R/f">
+                                                                            <field name="OP">GT</field>
+                                                                            <value name="A">
+                                                                              <block type="tick" id="i%qXN-uk/*gXM*m=I|JT"></block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="lists_getIndex" id="xVNjjS=[)I6{kV1})b~u">
+                                                                                <mutation statement="false" at="false"></mutation>
+                                                                                <field name="MODE">GET</field>
+                                                                                <field name="WHERE">LAST</field>
+                                                                                <value name="VALUE">
+                                                                                  <block type="variables_get" id="qlT9vR;9N|(D)CHq7$lm">
+                                                                                    <field name="VAR" id="Xt1Q`;k4`6.*sB`EO?S{" variabletype="">bb_lower</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="logic_compare" id="#_9[=bxP=R7T3yLmIF=[">
+                                                                            <field name="OP">LT</field>
+                                                                            <value name="A">
+                                                                              <block type="tick" id="!Ay:X6#-71QO$[s3yF2A"></block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="lists_getIndex" id="xFJA^%H.#PG.qP~WO-=x">
+                                                                                <mutation statement="false" at="false"></mutation>
+                                                                                <field name="MODE">GET</field>
+                                                                                <field name="WHERE">LAST</field>
+                                                                                <value name="VALUE">
+                                                                                  <block type="variables_get" id="X}t[:dCr67c4l80BX;,{">
+                                                                                    <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="variables_set" id="0zm$21nGWHSpE}mOJCH$">
+                                                                        <field name="VAR" id="I4p_xJrnHJwr@c[dY_f*" variabletype="">touch_upper_1</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="logic_operation" id="nSNuSdMxP7R},/8n6i0a">
+                                                                            <field name="OP">AND</field>
+                                                                            <value name="A">
+                                                                              <block type="logic_compare" id=".r!XMKvxdP{MF_5}0;ZO">
+                                                                                <field name="OP">GT</field>
+                                                                                <value name="A">
+                                                                                  <block type="lists_getIndex" id="_?Sg.)CP_]$R(Jlz?b~{">
+                                                                                    <mutation statement="false" at="false"></mutation>
+                                                                                    <field name="MODE">GET</field>
+                                                                                    <field name="WHERE">LAST</field>
+                                                                                    <value name="VALUE">
+                                                                                      <block type="variables_get" id="NN1xe~U+jb@B_v.h7c|s">
+                                                                                        <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_arithmetic" id="u6O@:Tjxr7fEm-Y!Ow_7">
+                                                                                    <field name="OP">ADD</field>
+                                                                                    <value name="A">
+                                                                                      <shadow type="math_number" id="{*9pp*0.Lqk{k2eZ!K1-">
+                                                                                        <field name="NUM">1</field>
+                                                                                      </shadow>
+                                                                                      <block type="lists_getIndex" id="7hOR.5i^X7,S)3yP?qb1">
+                                                                                        <mutation statement="false" at="false"></mutation>
+                                                                                        <field name="MODE">GET</field>
+                                                                                        <field name="WHERE">LAST</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="variables_get" id="*KzJFSo%mUe)-O/vynW+">
+                                                                                            <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <shadow type="math_number" id="p?p@V4b|ZRO+mg}h@BT1">
+                                                                                        <field name="NUM">0.2</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="logic_compare" id="H${y3LZJ4t[-SqD7%:k8">
+                                                                                <field name="OP">GT</field>
+                                                                                <value name="A">
+                                                                                  <block type="lists_getIndex" id="z(Yr=@=ilLthct|{XU-q">
+                                                                                    <mutation statement="false" at="false"></mutation>
+                                                                                    <field name="MODE">GET</field>
+                                                                                    <field name="WHERE">LAST</field>
+                                                                                    <value name="VALUE">
+                                                                                      <block type="variables_get" id="R4pKxx=Ep/3L9(E{na]Q">
+                                                                                        <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_arithmetic" id=")9puJO4/2Go2NIW|O:)[">
+                                                                                    <field name="OP">ADD</field>
+                                                                                    <value name="A">
+                                                                                      <shadow type="math_number" id="4dg)vu1Zv9e|^wRCxQ{;">
+                                                                                        <field name="NUM">1</field>
+                                                                                      </shadow>
+                                                                                      <block type="lists_getIndex" id="Xa=`7`lHU*cz~aep~LWB">
+                                                                                        <mutation statement="false" at="false"></mutation>
+                                                                                        <field name="MODE">GET</field>
+                                                                                        <field name="WHERE">LAST</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="variables_get" id="NCceTpunm{4Hi-J;pG[t">
+                                                                                            <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <shadow type="math_number" id="GnHdr}x9=i~6[DW{jxzl">
+                                                                                        <field name="NUM">0.2</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="variables_set" id="Yut/F{O1;P;dXtZR1m^!">
+                                                                            <field name="VAR" id="rb%?f}5_aW*EpqlfHMV;" variabletype="">sma_100_cup_position</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="logic_operation" id="RSSZ5QM9})TpmhoJFS/S">
+                                                                                <field name="OP">OR</field>
+                                                                                <value name="A">
+                                                                                  <block type="logic_operation" id="ou0;gbi*2x|;e15e#a1U">
+                                                                                    <field name="OP">OR</field>
+                                                                                    <value name="A">
+                                                                                      <block type="logic_operation" id="kdSd:ldViHi2=cpMrI_*">
+                                                                                        <field name="OP">OR</field>
+                                                                                        <value name="A">
+                                                                                          <block type="logic_compare" id=",{N^_Go_:OyltZ9kEp!^">
+                                                                                            <field name="OP">LT</field>
+                                                                                            <value name="A">
+                                                                                              <block type="lists_getIndex" id="?Njh)}iZ[?uLB$g:jhSJ">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="Fk;eZG(f--gB/V1wZmdR">
+                                                                                                    <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id="*|[34[7u,b.a6FnCwU10">
+                                                                                                    <field name="NUM">7</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="lists_getIndex" id="{vhrKW;Fh.P:|)zITtcf">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="yQ{We(Bra.$XQu@a|[,5">
+                                                                                                    <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id="zIW7$Whb0n8OG$+=#ujP">
+                                                                                                    <field name="NUM">7</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="logic_compare" id="E.og.D)o-FD}.!8%M6C!">
+                                                                                            <field name="OP">LT</field>
+                                                                                            <value name="A">
+                                                                                              <block type="lists_getIndex" id="L1k.z?qO,w%~uoR2`Mww">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="Bc)i$q#]3h/k,Yi+[RvI">
+                                                                                                    <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id="oxkimB@8wS^h`BdoXu4-">
+                                                                                                    <field name="NUM">6</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="lists_getIndex" id="u4WF=Ya@:GE}pVlLpxWK">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="n+0PW;i}O6,p`EAB/Rex">
+                                                                                                    <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id="f~7J#V@5_1|2rT:[s4C4">
+                                                                                                    <field name="NUM">6</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="logic_compare" id="wRz@I=.26E_Ch),$.$@p">
+                                                                                        <field name="OP">LT</field>
+                                                                                        <value name="A">
+                                                                                          <block type="lists_getIndex" id="cF{50UMQ:[G/6imtq^kc">
+                                                                                            <mutation statement="false" at="true"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">FROM_END</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="^bX/f+K(/QPV3W]=PW4n">
+                                                                                                <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="AT">
+                                                                                              <block type="math_number" id="=7RAtStb7UA{~Q-/:K!{">
+                                                                                                <field name="NUM">5</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="lists_getIndex" id=";?L=;YiS3JzWS*Dt]#hV">
+                                                                                            <mutation statement="false" at="true"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">FROM_END</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="WCr$]^~KfyH-)Y+J=SdS">
+                                                                                                <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="AT">
+                                                                                              <block type="math_number" id="9f1C:e~.Um0Ac@`%/*fa">
+                                                                                                <field name="NUM">5</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="logic_compare" id="$;crj9GaHB*V6l1kzAr{">
+                                                                                    <field name="OP">LT</field>
+                                                                                    <value name="A">
+                                                                                      <block type="lists_getIndex" id="^l,;wnKtzhcY?q5-/[gL">
+                                                                                        <mutation statement="false" at="true"></mutation>
+                                                                                        <field name="MODE">GET</field>
+                                                                                        <field name="WHERE">FROM_END</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="variables_get" id="1=.MA,S$RZf009P{L+2J">
+                                                                                            <field name="VAR" id="lzQ#K[.?IsLu~%Uri*.0" variabletype="">sma_100</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="AT">
+                                                                                          <block type="math_number" id="16F7HpQtr1K?%c/Z;FA7">
+                                                                                            <field name="NUM">4</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="lists_getIndex" id="XU-ts.EXG,UrtU%5$g$Y">
+                                                                                        <mutation statement="false" at="true"></mutation>
+                                                                                        <field name="MODE">GET</field>
+                                                                                        <field name="WHERE">FROM_END</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="variables_get" id="1K:bvG0OzQgB{~(NKSju">
+                                                                                            <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="AT">
+                                                                                          <block type="math_number" id="vuF6[WBxPcv25VZ!@ioj">
+                                                                                            <field name="NUM">4</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="variables_set" id="mQm//N@~4YS_H7#-$D1Q">
+                                                                                <field name="VAR" id="`XIwQ*x4##K[XMYb8a)+" variabletype="">sma_50_cup_position</field>
+                                                                                <value name="VALUE">
+                                                                                  <block type="logic_operation" id=",l,wPRULYT.Y_h[bIC7T">
+                                                                                    <field name="OP">OR</field>
+                                                                                    <value name="A">
+                                                                                      <block type="logic_operation" id="p1Z!B;yD#5^ZUf{8(:Q0">
+                                                                                        <field name="OP">OR</field>
+                                                                                        <value name="A">
+                                                                                          <block type="logic_operation" id="UX+Qcv3]YVCa`x)Cj!aq">
+                                                                                            <field name="OP">OR</field>
+                                                                                            <value name="A">
+                                                                                              <block type="logic_compare" id="PQRT7=nl!`:N6r,xLMJC">
+                                                                                                <field name="OP">LT</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="lists_getIndex" id="z=y)q?p$~(Liv:5(B}E0">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="Wqk%{yAgk6odeyw=@hAF">
+                                                                                                        <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="q6:FJipir-ho+ZP0=ppG">
+                                                                                                        <field name="NUM">7</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="lists_getIndex" id="}J%=m4{(l~+Om_#-4~N5">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="peZ0=Y6(Qh_(K^MMKV{=">
+                                                                                                        <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="y~pC{y.XQ[(h^4/PA@ch">
+                                                                                                        <field name="NUM">7</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="logic_compare" id="+ykoC;IEcn5S)2C2Gr#K">
+                                                                                                <field name="OP">LT</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="lists_getIndex" id="=,.ffM)sCF7Hi/:y/1-v">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="Aamgaxh{@Dh]BLznBYlU">
+                                                                                                        <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="wQ61ALEa%=,u6f3G%y-g">
+                                                                                                        <field name="NUM">6</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="lists_getIndex" id="rko)~;,Pv|1t~DSNTI`=">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="F3*OeiR+0}(act7Axfon">
+                                                                                                        <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="Ir69UnUE(/^Z]Sn^oDBG">
+                                                                                                        <field name="NUM">6</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="logic_compare" id="%_mPhJTKST/R)3xQaTP7">
+                                                                                            <field name="OP">LT</field>
+                                                                                            <value name="A">
+                                                                                              <block type="lists_getIndex" id="?t[j#]s2$2%3%/m[~HwZ">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="wU}V7do=!2{wT)H`?28J">
+                                                                                                    <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id=",tQ!Io(,$YB4o.;=j/++">
+                                                                                                    <field name="NUM">5</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="lists_getIndex" id="^0!u^Dx9yMzR4Q+:-9}j">
+                                                                                                <mutation statement="false" at="true"></mutation>
+                                                                                                <field name="MODE">GET</field>
+                                                                                                <field name="WHERE">FROM_END</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="variables_get" id="+W?$.TP15tHiSdR-nXP{">
+                                                                                                    <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="AT">
+                                                                                                  <block type="math_number" id="3ElIYX~9:DU-ztcu~??i">
+                                                                                                    <field name="NUM">5</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="logic_compare" id="j!kTrfWHlhY:!3Nb~^uI">
+                                                                                        <field name="OP">LT</field>
+                                                                                        <value name="A">
+                                                                                          <block type="lists_getIndex" id="qWnRIif|W3`=`]3iveKf">
+                                                                                            <mutation statement="false" at="true"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">FROM_END</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="qD_OwS2wB6Q5,#OY}H=B">
+                                                                                                <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="AT">
+                                                                                              <block type="math_number" id="+.M3h^xEcG[Z4~6UU9Wx">
+                                                                                                <field name="NUM">4</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="lists_getIndex" id="wq|8+VYH*=_dl0}WbVXR">
+                                                                                            <mutation statement="false" at="true"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">FROM_END</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="/EbsD=n(sYsMBmJ$lA7P">
+                                                                                                <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="AT">
+                                                                                              <block type="math_number" id="p@-$v:1:ccvfPNewhB1q">
+                                                                                                <field name="NUM">4</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="controls_if" id=":BEP1;|!@Jh0;X^qX{,@">
+                                                                                    <mutation else="1"></mutation>
+                                                                                    <value name="IF0">
+                                                                                      <block type="logic_compare" id="R~vUVR=qvHm+*9av1n4T">
+                                                                                        <field name="OP">GT</field>
+                                                                                        <value name="A">
+                                                                                          <block type="lists_getIndex" id="!Q(HXaQycujn09hdA]T7">
+                                                                                            <mutation statement="false" at="false"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">LAST</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="lKeFaJj.@%{IP(N*DE)p">
+                                                                                                <field name="VAR" id="VQ}f.zeW0uFg5rNZ$qo$" variabletype="">sma_50</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="lists_getIndex" id="xAY@3^3Dvzf6]HRdf_~L">
+                                                                                            <mutation statement="false" at="false"></mutation>
+                                                                                            <field name="MODE">GET</field>
+                                                                                            <field name="WHERE">LAST</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="variables_get" id="MCDDr%d,F/JyJ[L.@2IN">
+                                                                                                <field name="VAR" id="5447oUVI7GzjxCjv~MXF" variabletype="">bb_top</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <statement name="DO0">
+                                                                                      <block type="variables_set" id="?,|yFD,aL(PsVd43PN%j">
+                                                                                        <field name="VAR" id="7OB1X6NArJZ:1?vO/Bl$" variabletype="">cup_position</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="logic_operation" id="Woa?ShN{Hv=G[,FWAW-,">
+                                                                                            <field name="OP">OR</field>
+                                                                                            <value name="A">
+                                                                                              <block type="variables_get" id="^$}]xKN5:(^FNSbe:ZeW">
+                                                                                                <field name="VAR" id="rb%?f}5_aW*EpqlfHMV;" variabletype="">sma_100_cup_position</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="variables_get" id="2cPn@{x(W?qQc{sz)EvM">
+                                                                                                <field name="VAR" id="`XIwQ*x4##K[XMYb8a)+" variabletype="">sma_50_cup_position</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </statement>
+                                                                                    <statement name="ELSE">
+                                                                                      <block type="variables_set" id="=_u,O4`e()Id8~1fzkj9">
+                                                                                        <field name="VAR" id="7OB1X6NArJZ:1?vO/Bl$" variabletype="">cup_position</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="variables_get" id="w9U9nWOxlfi/.lpySkmA">
+                                                                                            <field name="VAR" id="rb%?f}5_aW*EpqlfHMV;" variabletype="">sma_100_cup_position</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </statement>
+                                                                                    <next>
+                                                                                      <block type="variables_set" id="km`*9V7rgejs|g0pC(J(">
+                                                                                        <field name="VAR" id="bx??y*)o7svcj+|`7$9)" variabletype="">touch_upper_comp</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="logic_operation" id=";!V_.G+^]}3Ht9A/Bse3">
+                                                                                            <field name="OP">AND</field>
+                                                                                            <value name="A">
+                                                                                              <block type="logic_compare" id="J~L+wUB{93d=OxJa{~#%">
+                                                                                                <field name="OP">GT</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="tick" id="s^*kpAuueRwl42_Z*xI;"></block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="lists_getIndex" id="8Q/]/[{JPjLv*Zoe%^zm">
+                                                                                                    <mutation statement="false" at="false"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">LAST</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="UQ$Wwpu,{clze(cBUn[|">
+                                                                                                        <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="logic_compare" id="dxsC9,GimUZ|Jb=`-hR|">
+                                                                                                <field name="OP">LT</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="lists_getIndex" id="-S0eTQ)5laOs[e^{F]gy">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="ticks" id="YePVN1n#GRKLr,:]yn1r"></block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="yDq0CX:(jBkxl_}tE#o?">
+                                                                                                        <field name="NUM">2</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="lists_getIndex" id="o2xP@a$!(LN5GY6qJ.aJ">
+                                                                                                    <mutation statement="false" at="true"></mutation>
+                                                                                                    <field name="MODE">GET</field>
+                                                                                                    <field name="WHERE">FROM_END</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="87.:m%-cw{KkjCHq:O+x">
+                                                                                                        <field name="VAR" id="(![yo3:o_)z{6Oqtr,hV" variabletype="">bb_middle</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="AT">
+                                                                                                      <block type="math_number" id="Z%J`1}MDYNj:ShS4[FB^">
+                                                                                                        <field name="NUM">2</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <next>
+                                                                                          <block type="controls_if" id="xE9YM%_n`w,tD}`_gC;)">
+                                                                                            <value name="IF0">
+                                                                                              <block type="logic_operation" id="Sv8X^lYn=L%gA*3.[d3e">
+                                                                                                <field name="OP">AND</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="variables_get" id="gNJvpJOKqQt}!Oz/a?_h">
+                                                                                                    <field name="VAR" id="U6?Ep5$7PFxw?GZGEt;O" variabletype="">ema_30_crossover</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="logic_operation" id="VVjc6p2Tlqi*qpXpch.6">
+                                                                                                    <field name="OP">AND</field>
+                                                                                                    <value name="A">
+                                                                                                      <block type="variables_get" id="ZwcE]eFDb9{Vab_D)w.J">
+                                                                                                        <field name="VAR" id="CA}19Sk_:,f*nd9[iT-V" variabletype="">sma_below_low</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="B">
+                                                                                                      <block type="logic_operation" id="*MZoGlHw{S={y_OcHC%j">
+                                                                                                        <field name="OP">AND</field>
+                                                                                                        <value name="A">
+                                                                                                          <block type="variables_get" id="0XntiMut?_TH?Xh$:ecy">
+                                                                                                            <field name="VAR" id="U+QL7`L)/`43H4Vr:JY+" variabletype="">diff_1</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="B">
+                                                                                                          <block type="logic_operation" id="A/x@qdC5%`?r.md,rw$+">
+                                                                                                            <field name="OP">AND</field>
+                                                                                                            <value name="A">
+                                                                                                              <block type="logic_operation" id="ZAG.+}_,(;J0$]d)~M/3">
+                                                                                                                <field name="OP">AND</field>
+                                                                                                                <value name="A">
+                                                                                                                  <block type="variables_get" id="6o`Rb)(E|;*!wXqMxdSC">
+                                                                                                                    <field name="VAR" id="}8[PT#DFn;w4OuYo/cVr" variabletype="">ema_30_comp</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <value name="B">
+                                                                                                                  <block type="variables_get" id="eJ19g?duv}`OBT:ny.8`">
+                                                                                                                    <field name="VAR" id=":)d;19`*`Tj$]XoXVae|" variabletype="">diff_2</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="B">
+                                                                                                              <block type="variables_get" id="BtYT@=_uaYH}u[Sb]0kA">
+                                                                                                                <field name="VAR" id="c`Dq#TQ-G:gmk*w[Rj8j" variabletype="">volatility</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <statement name="DO0">
+                                                                                              <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+                                                                                                <field name="PURCHASE_LIST">ONETOUCH</field>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <next>
+                                                                                              <block type="controls_if" id="RGNNhlWn=29,-cf7wW0R">
+                                                                                                <value name="IF0">
+                                                                                                  <block type="logic_operation" id="#{(3j{e2as8.TvH/5cLg">
+                                                                                                    <field name="OP">AND</field>
+                                                                                                    <value name="A">
+                                                                                                      <block type="variables_get" id="q3@kK-ZcbwYDz}Ks}C%3">
+                                                                                                        <field name="VAR" id="dU4GMElE/PKC4Wu-_}VO" variabletype="">bb_middle_crossover</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="B">
+                                                                                                      <block type="logic_operation" id="=F;l+%eWfO?1alsMgx7,">
+                                                                                                        <field name="OP">AND</field>
+                                                                                                        <value name="A">
+                                                                                                          <block type="variables_get" id="eV$bIKqB?a=6zd3^$r2n">
+                                                                                                            <field name="VAR" id="CA}19Sk_:,f*nd9[iT-V" variabletype="">sma_below_low</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="B">
+                                                                                                          <block type="logic_operation" id="PjscWZ;~q#}~p`1d5m6b">
+                                                                                                            <field name="OP">AND</field>
+                                                                                                            <value name="A">
+                                                                                                              <block type="variables_get" id="*p8F*i,@xOKb2Qr88V?}">
+                                                                                                                <field name="VAR" id="U+QL7`L)/`43H4Vr:JY+" variabletype="">diff_1</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="B">
+                                                                                                              <block type="logic_operation" id="+Xg`o,.6iKZm%AFklv6/">
+                                                                                                                <field name="OP">AND</field>
+                                                                                                                <value name="A">
+                                                                                                                  <block type="variables_get" id="Bi`z,._Gi`wn0[h[]e{3">
+                                                                                                                    <field name="VAR" id=":)d;19`*`Tj$]XoXVae|" variabletype="">diff_2</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <value name="B">
+                                                                                                                  <block type="variables_get" id="Zjs4pU?g{K1B`c!NCn$C">
+                                                                                                                    <field name="VAR" id="c`Dq#TQ-G:gmk*w[Rj8j" variabletype="">volatility</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <statement name="DO0">
+                                                                                                  <block type="purchase" id="?8YFe4_2MIp]*q#5f7]~">
+                                                                                                    <field name="PURCHASE_LIST">ONETOUCH</field>
+                                                                                                  </block>
+                                                                                                </statement>
+                                                                                                <next>
+                                                                                                  <block type="controls_if" id="fz`}4g`hqM!I}N7e(][0">
+                                                                                                    <value name="IF0">
+                                                                                                      <block type="logic_operation" id="8YS?{ZN%U!SaqN+,Bs:z">
+                                                                                                        <field name="OP">AND</field>
+                                                                                                        <value name="A">
+                                                                                                          <block type="variables_get" id="w:HnY7M!mMt=TE}vD3b^">
+                                                                                                            <field name="VAR" id="I4p_xJrnHJwr@c[dY_f*" variabletype="">touch_upper_1</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="B">
+                                                                                                          <block type="logic_operation" id="G:Ln4d(@%U5S2]cHg(IN">
+                                                                                                            <field name="OP">AND</field>
+                                                                                                            <value name="A">
+                                                                                                              <block type="variables_get" id="JLSNkLxJT?6MXGl=z1u*">
+                                                                                                                <field name="VAR" id="bx??y*)o7svcj+|`7$9)" variabletype="">touch_upper_comp</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="B">
+                                                                                                              <block type="logic_operation" id="4Nlr(YTsOZc^Q%KfUjv9">
+                                                                                                                <field name="OP">AND</field>
+                                                                                                                <value name="A">
+                                                                                                                  <block type="variables_get" id="g6EBN9^kip=4rs#K/[AR">
+                                                                                                                    <field name="VAR" id="7OB1X6NArJZ:1?vO/Bl$" variabletype="">cup_position</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                                <value name="B">
+                                                                                                                  <block type="variables_get" id="`mkZJh*#(o~GJ4C%,Qs]">
+                                                                                                                    <field name="VAR" id="c`Dq#TQ-G:gmk*w[Rj8j" variabletype="">volatility</field>
+                                                                                                                  </block>
+                                                                                                                </value>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <statement name="DO0">
+                                                                                                      <block type="purchase" id="H!$H+P+Q}L6p*#SwVFsP">
+                                                                                                        <field name="PURCHASE_LIST">ONETOUCH</field>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                    <next>
+                                                                                                      <block type="notify" id="`]r1jq}$%l6xw-5d[`)2">
+                                                                                                        <field name="NOTIFICATION_TYPE">success</field>
+                                                                                                        <field name="NOTIFICATION_SOUND">silent</field>
+                                                                                                        <value name="MESSAGE">
+                                                                                                          <shadow type="text" id="T-+ef;n#Nqe{OnsMq^zt">
+                                                                                                            <field name="TEXT">TNT-6-ON!</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </next>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </next>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </next>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" collapsed="true" x="0" y="106">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="timeout" id=",Y;nufOxRJ{ad48[G,:D">
+        <statement name="TIMEOUTSTACK">
+          <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+        </statement>
+        <value name="SECONDS">
+          <shadow type="math_number" id="[qDgx3wTvW|dOXDlPkWl">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>
